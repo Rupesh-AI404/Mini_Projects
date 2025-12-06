@@ -6,7 +6,7 @@ class Coffee:
 
 
 class Order:
-    # initialize order with empty list
+    # Initialize order with empty list
     def __init__(self):
         self.items = []
 
