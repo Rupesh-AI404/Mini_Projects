@@ -1,4 +1,5 @@
 class Coffee:
+
     # initialize coffee with name and price
     def __init__(self, name, price):
         self.name = name
@@ -25,6 +26,7 @@ class Order:
             print("Your order is empty")
             return
         print("\nYour order:")
+
         for i, item in enumerate(self.items, 1):
             print(f"{i}. {item.name} - ${item.price:.2f}")
         print(f"Total: ${self.total():.2f}\n")
@@ -48,7 +50,7 @@ class Order:
 # display menu and handle user input
 def main():
     menu = [
-        Coffee("Espresso", 1.99),
+        Coffee("Espresso", 2.99),
         Coffee("Latte", 2.49),
         Coffee("Cappuccino", 2.79),
         Coffee("Mocha", 2.99)
