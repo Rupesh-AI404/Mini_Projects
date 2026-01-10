@@ -53,7 +53,7 @@ def main():
         Coffee("Espresso", 2.99),
         Coffee("Latte", 2.49),
         Coffee("Cappuccino", 2.79),
-        Coffee("Mocha", 5.99)
+        Coffee("Mocha", 4.99)
     ]
 
     order = Order()
