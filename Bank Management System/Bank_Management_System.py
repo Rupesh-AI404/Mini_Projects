@@ -28,7 +28,7 @@ class Bank:
     def __accountgenerate(cls):
         alpha = random.choices(string.ascii_letters, k = 3)
         num = random.choices(string.digits, k = 3)
-        spchar = random.choices("!@#$%^&*", k = 1)
+        spchar = random.choices("!@#$%^&*_", k = 1)
         id = alpha + num + spchar
         random.shuffle(id)
         return ''.join(id)
