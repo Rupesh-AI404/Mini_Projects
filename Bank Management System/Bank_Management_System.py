@@ -201,7 +201,7 @@ if check == 3:
 
 
 if check == 4:
-    print("Viewing the details of the account")
+    print("Viewing the details of the account.")
     user.showdetails()
 
 
