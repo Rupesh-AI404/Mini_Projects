@@ -191,7 +191,7 @@ if check == 1:
 
 
 if check == 2:
-    print("Depositing the money in the bank")
+    print("Depositing the money in the bank.")
     user.depositmoney()
 
 
