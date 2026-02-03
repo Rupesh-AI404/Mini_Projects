@@ -196,7 +196,7 @@ if check == 2:
 
 
 if check == 3:
-    print("Withdrawing the money from the bank")
+    print("Withdrawing the money from the bank.")
     user.withdrawmoney()
 
 
