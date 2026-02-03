@@ -206,7 +206,7 @@ if check == 4:
 
 
 if check == 5:
-    print("Updating the details of the account")
+    print("Updating the details of the account.")
     user.updatedetails()
 
 
