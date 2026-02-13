@@ -51,7 +51,7 @@ class Order:
 def main():
     menu = [
         Coffee("Espresso", 4.99),
-        Coffee("Latte", 2.49),
+        Coffee("Latte", 3.49),
         Coffee("Cappuccino", 2.79),
         Coffee("Mocha", 5.99)
     ]
