@@ -50,7 +50,7 @@ class Order:
 # display menu and handle user input
 def main():
     menu = [
-        Coffee("Espresso", 4.99),
+        Coffee("Espresso", 5.99),
         Coffee("Latte", 3.49),
         Coffee("Cappuccino", 2.79),
         Coffee("Mocha", 6.99)
