@@ -8,7 +8,7 @@ Concepts covered:
 - User input handling
 - Conditional statements
 - Loops
-- Error handling
+- Error handlin
 """
 
 import json
