@@ -36,7 +36,7 @@ except ImportError:
     Style = Fore  # For compatibility
 
 # API Configuration
-API_KEY = ""  # Get free key from https://openweathermap.org/api
+API_KEY = "694e1c2ee810ebdf4429e4816e8d1596"  # Get free key from https://openweathermap.org/api
 BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
 
 # Default city if none provided
