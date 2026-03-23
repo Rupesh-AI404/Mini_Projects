@@ -38,7 +38,7 @@ except ImportError:
 # Hardcoded key as fallback; best practice is to use an environment variable:
 #   export OPENWEATHER_API_KEY="your_key_here"   (Linux/Mac)
 #   set OPENWEATHER_API_KEY=your_key_here        (Windows CMD)
-FALLBACK_API_KEY = "694e1c2ee810ebdf4429e4816e8d1596"
+FALLBACK_API_KEY = "88a9179946d50127eae3cd7a554ffdc2"
 
 BASE_URL      = "https://api.openweathermap.org/data/2.5/weather"
 FORECAST_URL  = "https://api.openweathermap.org/data/2.5/forecast"   # 5-day / 3-hour
