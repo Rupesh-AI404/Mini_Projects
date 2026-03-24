@@ -1,14 +1,6 @@
 """
-Password Manager & Generator - A small project covering Python fundamentals
-Concepts covered:
-- File encryption basics
-- Random password generation
-- Dictionaries & lists
-- File I/O with CSV
-- String manipulation
-- User input validation
-- Loops & conditionals
-- Time tracking
+Password Manager & Generator - Fixed Version
+Works reliably on Windows, Mac, and Linux
 """
 
 import os
@@ -16,22 +8,30 @@ import csv
 import random
 import string
 import hashlib
-import getpass
+import sys
 from datetime import datetime
-from pathlib import Path
 
 # File to store passwords
 PASSWORD_FILE = "passwords.csv"
 MASTER_PASSWORD_FILE = "master.hash"
 
-
 class PasswordManager:
-    """A simple password manager with encryption"""
+    """A simple password manager"""
 
     def __init__(self):
         self.is_logged_in = False
-        self.current_user = None
         self.passwords = []
+
+    def input_password(self, prompt):
+        """Cross-platform password input"""
+        try:
+            # Try getpass first (works in most terminals)
+            import getpass
+            return getpass.getpass(prompt)
+        except:
+            # Fallback to regular input (password will be visible)
+            print(prompt, end='', flush=True)
+            return input()
 
     def create_master_password(self):
         """Create master password for first-time setup"""
@@ -39,10 +39,15 @@ class PasswordManager:
         print("=" * 30)
 
         while True:
-            password = getpass.getpass("Create master password: ")
-            confirm = getpass.getpass("Confirm master password: ")
+            password = self.input_password("Create master password: ")
 
-            if password == confirm and len(password) >= 4:
+            if len(password) < 4:
+                print("❌ Password must be at least 4 characters!")
+                continue
+
+            confirm = self.input_password("Confirm master password: ")
+
+            if password == confirm:
                 # Hash the password
                 hashed = hashlib.sha256(password.encode()).hexdigest()
 
@@ -51,8 +56,6 @@ class PasswordManager:
 
                 print("✅ Master password created successfully!")
                 return True
-            elif len(password) < 4:
-                print("❌ Password must be at least 4 characters!")
             else:
                 print("❌ Passwords don't match!")
 
@@ -63,7 +66,7 @@ class PasswordManager:
 
         attempts = 3
         while attempts > 0:
-            password = getpass.getpass("Enter master password: ")
+            password = self.input_password("Enter master password: ")
             hashed = hashlib.sha256(password.encode()).hexdigest()
 
             with open(MASTER_PASSWORD_FILE, 'r') as f:
@@ -76,14 +79,16 @@ class PasswordManager:
                 return True
             else:
                 attempts -= 1
-                print(f"❌ Wrong password! {attempts} attempts remaining.")
+                if attempts > 0:
+                    print(f"❌ Wrong password! {attempts} attempts remaining.")
+                else:
+                    print("❌ Wrong password! No attempts left.")
 
         print("🔒 Too many failed attempts. Exiting.")
         return False
 
     def generate_password(self, length=12, use_symbols=True):
         """Generate a strong random password"""
-        # Character sets
         lowercase = string.ascii_lowercase
         uppercase = string.ascii_uppercase
         digits = string.digits
@@ -99,14 +104,12 @@ class PasswordManager:
         if use_symbols:
             password.append(random.choice(symbols))
 
-        # Fill the rest with random characters
+        # Fill the rest
         all_chars = lowercase + uppercase + digits + symbols
         for _ in range(length - len(password)):
             password.append(random.choice(all_chars))
 
-        # Shuffle to avoid predictable pattern
         random.shuffle(password)
-
         return ''.join(password)
 
     def add_password(self):
@@ -132,18 +135,16 @@ class PasswordManager:
         choice = input("Choose (1/2): ").strip()
 
         if choice == '1':
-            length = input("Password length (default 12): ").strip()
-            length = int(length) if length.isdigit() else 12
+            length_input = input("Password length (default 12): ").strip()
+            length = int(length_input) if length_input.isdigit() else 12
             use_symbols = input("Include symbols? (y/n, default y): ").strip().lower() != 'n'
             password = self.generate_password(length, use_symbols)
             print(f"\n🔑 Generated password: {password}")
         else:
-            password = getpass.getpass("Enter password: ")
+            password = self.input_password("Enter password: ")
 
-        # Optional notes
         notes = input("Notes (optional): ").strip()
 
-        # Create entry
         entry = {
             'service': service,
             'username': username,
@@ -169,7 +170,7 @@ class PasswordManager:
             print(f"\n{idx}. {entry['service']}")
             print(f"   Username: {entry['username']}")
             print(f"   Password: {entry['password']}")
-            if entry['notes']:
+            if entry.get('notes'):
                 print(f"   Notes: {entry['notes']}")
             print(f"   Created: {entry['created']}")
 
@@ -196,7 +197,7 @@ class PasswordManager:
                 print(f"\nService: {entry['service']}")
                 print(f"Username: {entry['username']}")
                 print(f"Password: {entry['password']}")
-                if entry['notes']:
+                if entry.get('notes'):
                     print(f"Notes: {entry['notes']}")
         else:
             print(f"No entries found for '{search_term}'")
@@ -212,9 +213,9 @@ class PasswordManager:
         try:
             choice = int(input("\n🗑️ Enter number to delete (0 to cancel): "))
             if 1 <= choice <= len(self.passwords):
-                confirm = input(f"Delete '{self.passwords[choice - 1]['service']}'? (y/n): ")
+                confirm = input(f"Delete '{self.passwords[choice-1]['service']}'? (y/n): ")
                 if confirm.lower() == 'y':
-                    deleted = self.passwords.pop(choice - 1)
+                    deleted = self.passwords.pop(choice-1)
                     self.save_passwords()
                     print(f"✅ '{deleted['service']}' deleted successfully!")
                 else:
@@ -242,7 +243,7 @@ class PasswordManager:
                     f.write(f"Service: {entry['service']}\n")
                     f.write(f"Username: {entry['username']}\n")
                     f.write(f"Password: {entry['password']}\n")
-                    if entry['notes']:
+                    if entry.get('notes'):
                         f.write(f"Notes: {entry['notes']}\n")
                     f.write(f"Created: {entry['created']}\n")
                     f.write("-" * 30 + "\n")
@@ -255,7 +256,7 @@ class PasswordManager:
 
     def password_strength_checker(self):
         """Check password strength"""
-        password = getpass.getpass("Enter password to check: ")
+        password = self.input_password("Enter password to check: ")
 
         score = 0
         feedback = []
@@ -342,6 +343,9 @@ class PasswordManager:
             print(f"⚠️ Error loading passwords: {e}")
             self.passwords = []
 
+def clear_screen():
+    """Clear terminal screen"""
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def main():
     """Main program loop"""
@@ -373,8 +377,8 @@ def main():
         choice = input("\nEnter your choice (1-8): ").strip()
 
         if choice == '1':
-            length = input("Password length (default 12): ").strip()
-            length = int(length) if length.isdigit() else 12
+            length_input = input("Password length (default 12): ").strip()
+            length = int(length_input) if length_input.isdigit() else 12
             use_symbols = input("Include symbols? (y/n, default y): ").strip().lower() != 'n'
             password = manager.generate_password(length, use_symbols)
             print(f"\n🔑 Generated Password: {password}")
@@ -406,7 +410,6 @@ def main():
 
         input("\nPress Enter to continue...")
 
-
 if __name__ == "__main__":
     try:
         main()
@@ -414,3 +417,5 @@ if __name__ == "__main__":
         print("\n\n👋 Goodbye!")
     except Exception as e:
         print(f"\n❌ Unexpected error: {e}")
+        import traceback
+        traceback.print_exc()
