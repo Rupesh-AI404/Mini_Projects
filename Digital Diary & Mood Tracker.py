@@ -13,6 +13,7 @@ Concepts covered:
 import json
 import os
 from datetime import datetime, timedelta
+import numpy as np
 import random
 
 # File to store diary entries
