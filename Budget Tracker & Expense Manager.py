@@ -245,7 +245,7 @@ class BudgetTracker:
     def set_budget(self):
         """Set monthly budget for categories"""
         print("\n🎯 SET MONTHLY BUDGET")
-        print("-" * 50)
+        print("-" * 30)
 
         month = input("Month (YYYY-MM, press Enter for current month): ").strip()
         if not month:
