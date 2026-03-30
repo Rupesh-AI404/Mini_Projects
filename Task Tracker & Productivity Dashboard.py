@@ -14,8 +14,6 @@ import json
 import os
 from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
-import numpy as np
-import seaborn as sns
 from collections import defaultdict
 
 # File to store tasks
