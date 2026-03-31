@@ -144,7 +144,7 @@ def get_forecast_data(city: str, api_key: str) -> Optional[Dict]:
         "q":     city,
         "appid": api_key,
         "units": "metric",
-        "cnt":   40,   # 40 × 3 hours = 5 days
+        "cnt":   30,   # 40 × 3 hours = 5 days
     }
 
     try:
