@@ -43,7 +43,7 @@ FALLBACK_API_KEY = "88a9179946d50127eae3cd7a554ffdc2"
 BASE_URL      = "https://api.openweathermap.org/data/2.5/weather"
 FORECAST_URL  = "https://api.openweathermap.org/data/2.5/forecast"   # 5-day / 3-hour
 
-DEFAULT_CITY  = "Mumbai"
+DEFAULT_CITY  = "lalitpur"
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
