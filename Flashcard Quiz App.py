@@ -539,7 +539,7 @@ class FlashcardApp:
         avg_accuracy = sum(s.get_stats()['avg_accuracy'] for s in self.sets) / len(self.sets)
 
         print("\n📊 OVERALL STATISTICS")
-        print("=" * 40)
+        print("=" * 30)
         print(f"\n📈 Overview:")
         print(f"   Total sets: {len(self.sets)}")
         print(f"   Total cards: {total_cards}")
