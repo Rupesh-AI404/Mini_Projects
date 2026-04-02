@@ -62,7 +62,7 @@ def add_book(library):
     while True:
         try:
             year = int(input("Enter publication year: "))
-            if 1000 <= year <= datetime.now().year:
+            if 2000 <= year <= datetime.now().year:
                 break
             else:
                 print(f"Please enter a valid year (1000-{datetime.now().year})")
