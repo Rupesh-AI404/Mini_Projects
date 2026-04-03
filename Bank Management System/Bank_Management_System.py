@@ -137,6 +137,8 @@ class Bank:
                 newdata["email"] = userdata[0]['email']
             if newdata["pin"] == "":
                 newdata["pin"] = userdata[0]['pin']
+            if newdata["age"] == "":
+                newdata["age"] = userdata[0]['age']
 
             newdata['age'] = userdata[0]['age']
             newdata['accountNo'] = userdata[0]['accountNo']
