@@ -143,6 +143,7 @@ class Bank:
             newdata['age'] = userdata[0]['age']
             newdata['accountNo'] = userdata[0]['accountNo']
             newdata['balance'] = userdata[0]['balance']
+            print(newdata)
 
 
             if type(newdata['pin']) == str:
