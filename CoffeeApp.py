@@ -52,7 +52,7 @@ def main():
     menu = [
         Coffee("Espresso", 3.99),
         Coffee("Latte", 5.49),
-        Coffee("Cappuccino", 5.79),
+        Coffee("Cappuccino", 6.79),
         Coffee("Mocha", 5.99)
     ]
 
