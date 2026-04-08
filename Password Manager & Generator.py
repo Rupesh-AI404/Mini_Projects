@@ -374,6 +374,7 @@ def main():
         print("8. 🚪 Exit")
         print("=" * 40)
 
+
         choice = input("\nEnter your choice (1-8): ").strip()
 
         if choice == '1':
