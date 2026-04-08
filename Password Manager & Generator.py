@@ -275,6 +275,7 @@ class PasswordManager:
         has_upper = any(c.isupper() for c in password)
         has_digit = any(c.isdigit() for c in password)
         has_symbol = any(c in string.punctuation for c in password)
+        has_space = ' ' in password
 
         if has_lower:
             score += 1
@@ -383,6 +384,7 @@ def main():
             use_symbols = input("Include symbols? (y/n, default y): ").strip().lower() != 'n'
             password = manager.generate_password(length, use_symbols)
             print(f"\n🔑 Generated Password: {password}")
+
 
         elif choice == '2':
             manager.add_password()
