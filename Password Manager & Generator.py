@@ -10,6 +10,7 @@ import string
 import hashlib
 import sys
 from datetime import datetime
+import platform
 
 # File to store passwords
 PASSWORD_FILE = "passwords.csv"
@@ -140,6 +141,7 @@ class PasswordManager:
             use_symbols = input("Include symbols? (y/n, default y): ").strip().lower() != 'n'
             password = self.generate_password(length, use_symbols)
             print(f"\n🔑 Generated password: {password}")
+
         else:
             password = self.input_password("Enter password: ")
 
