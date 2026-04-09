@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 from collections import defaultdict
 import numpy as np
 
+
 # File to store tasks
 TASKS_FILE = "tasks.json"
 
