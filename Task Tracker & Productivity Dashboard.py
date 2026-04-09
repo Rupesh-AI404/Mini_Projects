@@ -16,7 +16,7 @@ from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
 from collections import defaultdict
 import numpy as np
-
+import pandas as pd
 
 # File to store tasks
 TASKS_FILE = "tasks.json"
