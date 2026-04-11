@@ -18,6 +18,7 @@ from collections import defaultdict
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
 
 # File to store tasks
 TASKS_FILE = "tasks.json"
