@@ -545,6 +545,7 @@ class FlashcardApp:
         print(f"   Total cards: {total_cards}")
         print(f"   Mastered cards: {total_mastered}")
         print(f"   Average accuracy: {avg_accuracy:.0f}%")
+        print("=" * 40)
 
         # Best and worst sets
         if self.sets:
