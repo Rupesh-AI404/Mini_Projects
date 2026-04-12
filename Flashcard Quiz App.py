@@ -547,6 +547,7 @@ class FlashcardApp:
         print(f"   Average accuracy: {avg_accuracy:.0f}%")
         print("=" * 40)
 
+
         # Best and worst sets
         if self.sets:
             best_set = max(self.sets, key=lambda s: s.get_stats()['avg_accuracy'])
@@ -613,6 +614,7 @@ def main():
             print("❌ Invalid choice! Please enter 1-8.")
 
         input("\nPress Enter to continue...")
+        print("\n" + "=" * 40)
 
 
 if __name__ == "__main__":
