@@ -590,6 +590,7 @@ def main():
         print("7. 📊 Overall Statistics")
         print("8. 🚪 Exit")
         print("=" * 40)
+        print()
 
         choice = input("\nYour choice (1-8): ").strip()
 
