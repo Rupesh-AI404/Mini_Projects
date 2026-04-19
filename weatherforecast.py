@@ -3,6 +3,8 @@ import time
 
 import requests
 from dotenv import load_dotenv
+import requests
+import json
 
 
 class WeatherMonitor:
